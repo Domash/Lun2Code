@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql">
+          <Version>2.1.0</Version>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Views\Account\login.cshtml.cs" />
+    </ItemGroup>
+
+</Project>
