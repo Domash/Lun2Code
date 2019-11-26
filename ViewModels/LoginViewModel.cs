@@ -5,7 +5,7 @@ namespace Lun2Code.ViewModels
 {
 	public class LoginViewModel
 	{
-		[Display(Name = "EMail")]
+		[Display(Name = "Email")]
 		public string Email { get; set; }
 		
 		[Display(Name = "Password")]
@@ -16,4 +16,5 @@ namespace Lun2Code.ViewModels
 		public string ReturnUrl { get; set; }
 
 	}
+
 }

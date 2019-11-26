@@ -16,5 +16,11 @@ namespace Lun2Code.Models
 		{
 			
 		}
+
+		public User(string s)
+		{
+			
+		}
+		
 	}
 }

@@ -9,7 +9,7 @@ namespace Lun2Code.Models
 		{
 			_context = context;
 		}
-		
+
 		public void Save()
 		{
 			_context.SaveChanges();
