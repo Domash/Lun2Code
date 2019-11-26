@@ -79,5 +79,11 @@ namespace Lun2Code.Controllers
 			return View(model);
 		}
 		
+		public async Task<IActionResult> LogOff()
+		{
+			await _signInManager.SignOutAsync();
+			return RedirectToAction("Index", "Home");
+		}
+		
 	}
 }

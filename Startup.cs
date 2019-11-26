@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Lun2Code.Logging;
 using Lun2Code.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Lun2Code
 {
@@ -52,7 +55,7 @@ namespace Lun2Code
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
 			if (env.IsDevelopment())
 			{
@@ -76,6 +79,13 @@ namespace Lun2Code
 					name: "default",
 					template: "{controller=Home}/{action=Index}/{id?}");
 			});
+		
+			var path = Configuration.GetSection("Logging").GetSection("LogFile").Value;
+			
+			File.WriteAllText(path, string.Empty);
+			
+			loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), path));
+			
 		}
 	}
 }

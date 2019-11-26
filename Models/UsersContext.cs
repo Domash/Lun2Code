@@ -7,7 +7,7 @@ namespace Lun2Code.Models
 	{
 		public UsersContext(DbContextOptions<UsersContext> options) : base(options)
 		{
-			Database.EnsureCreated();
+			//Database.EnsureCreated();
 		}
 
 		public DbSet<Photo> Photos { get; set; }

@@ -14,5 +14,10 @@ namespace Lun2Code.Models
 		{
 			_context.SaveChanges();
 		}
+
+		public User GetUserById(string id)
+		{
+			return _context.Users.Find(id);
+		}
 	}
 }

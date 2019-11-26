@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Lun2Code</title>
+    <title>Lun2Code</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,10 +17,25 @@
     </environment>
 </head>
 
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a asp-area="" asp-controller="User" asp-action="Index" class="navbar-brand">Lun2Code</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a method="post" asp-controller="Account" asp-action="LogOff" class="navbar-brand">Выйти</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container body-content">
         <div class="main_content">
             @RenderBody()
         </div>
     </div>
+</body>
 
 </html>
