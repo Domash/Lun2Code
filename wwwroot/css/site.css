@@ -1,37 +1,1096 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
-for details on configuring this project to bundle and minify static web assets. */
+﻿@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+    font-family: 'Source Sans Pro', sans-serif;
+    overflow-x: hidden;
+    font-weight: 400;
+    background-color: #eeeeee;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+button {
+    outline: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a:focus {
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover {
+    color: #fff;
+}
+
+button {
+    outline: none;
+}
+
+input {
+    outline: none;
+}
+
+textarea {
+    outline: none;
+}
+
+section {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+img {
+    float: left;
+}
+
+p {
+    font-size: 14px;
+    line-height: 26px;
+    color: #666666;
+}
+
+
+/* =================== Mainpage ================= */
+
+
+main {
+    float: left;
+    width: 100%;
+    padding: 60px 0;
+}
+
+.main-section {
+    float: left;
+    width: 100%;
+}
+
+.main-section-data > .row {
+    display: table;
+}
+
+.main-column {
+    float: none;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.full-width {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 10px;
+}
+
+.username-dt {
+    float: left;
+    width: 100%;
+    background-color: #006064;
+    padding-top: 40px;
+    border-radius: 10px;
+}
+
+.user-data {
+    text-align: center;
+}
+
+.usr-pic {
+    width: 210px;
+    height: 210px;
+    margin: 0 auto;
+    margin-bottom: -48px;
+}
+
+.usr-pic > img {
+    float: none;
+    border: 5px solid hsl(0, 0%, 100%);
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 200px;
+    border-radius: 200px;
+    width: 210px;
+    height: 210px;
+    object-fit: cover;
+}
+
+.user-profile {
+    float: left;
+    width: 100%;
+}
+
+.user-specs {
+    float: left;
+    width: 100%;
+    padding: 63px 0 10px 0;
+}
+
+.user-specs h3 {
+    color: #000000;
+    font-size: 24px;
+    text-transform: capitalize;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.user-specs span {
+    color: #686868;
+    font-size: 14px;
+}
+
+.user-fw-status {
+    float: left;
+    width: 100%;
+}
+
+.user-fw-status li {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    padding: 15px 0;
+}
+
+.user-fw-status li:last-child {
+    border-bottom: 0;
+}
+
+.user-fw-status li:nth-child(1),
+.user-fw-status li:nth-child(2) {
+    border-bottom: 0;
+}
+
+.user-fw-status li h4 {
+    color: #686868;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.user-fw-status span {
+    color: #000000;
+    font-size: 20px;
+}
+
+.user-fw-status li a {
+    color: #e44d3a;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.button-main-page {
+    margin-bottom: 20px;
+    background-color: #006064;
+}
+
+.button-main-page-danger {
+    margin-bottom: 15px;
+}
+
+/* ============= Left Navigation Bar ============ */
+.left_sidebar {
+    position: fixed;
+    width: 200px;
+    height: calc(100vh);
+    background: #000000;
+    color: #FFF;
+}
+
+.left_sidebar > ul {
+    width: 200px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.left_sidebar > ul > li {
+    padding: 16px;
+    transition: 0.5s;
+}
+
+.left_sidebar > ul > li > a {
+    color: #FFF;
+}
+
+.left_sidebar > ul > li:hover {
+    background: #00838f;
+    color: #fff;
+    cursor: pointer;
+}
+
+.main_content {
+    padding-left: 200px;
+    padding-top: 30px;
+}
+
 body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+.posts_list {
+    padding-top: 50px;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
+.friend_button {
+    background: #006064;
+    color: #FFF;
+
+    align-content: center;
+    text-align: center;
+}
+
+.friend_button:hover {
+    background: #00838f;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.friend_button > a {
+    color: #FFF;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+    height: auto;
+}
+
+.panel {
+    padding: 1%;
+}
+
+.requests-info {
+    padding-top: 10px;
+    margin-bottom: 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.admin-area {
+    padding-top: 10px;
+    margin-bottom: 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+
+.commentsArea {
+    float: right;
+    width: 70%;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 5px;
+
+}
+
+.delete-comment-button {
+    color: #25567B;
+    padding: 5px;
+    float: right;
+    border: none;
+    font-weight: 200;
+    font-size: x-small;
+    background-color: #FFF;
+}
+
+.comment-owner > a {
+    display: inline-block;
+    color: #000000;
+    font-size: 14px;
+    margin: 3px 0;
+    font-weight: 600;
+}
+
+.comment-owner-photo {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #fff;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+
+.comment-owner > a:hover {
+    color: #00838f;
+}
+
+.comment-date {
+    display: inline-block;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.comment-text {
+    margin: 5px 0;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.comment-sending-area {
+    float: right;
+    width: 70%;
+    background-color: #fff;
+    margin-bottom: 20px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.comment-sending-form {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    color: #b2b2b2;
+    font-size: 12px;
+    padding: 5px 10px 0 10px;
+    border: 1px solid #e6e6e6;
+    resize: none;
+    text-align: start;
+    margin: 0;
+}
+
+.add-comment-button {
+    color: #25567B;
+    padding: 12px 10px;
+    float: right;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.no-comments {
+    margin-left: 5px;
+}
+
+/* ============= Friends-mainpage ============ */
+
+.friends-main {
+    position: -webkit-sticky;
+    display: block;
+    position: sticky;
+    top: 70px;
+}
+
+.friends-main-title {
+    float: left;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.friends-main-title h3 {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+}
+
+.friends-main-title>h3>span {
+    color: #006064;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.friends-main-list {
+    float: left;
     width: 100%;
 }
 
-/* QR code generator */
-#qrCode {
-    margin: 15px;
+.friends-main-usd {
+    float: left;
+    width: 100%;
+    padding: 15px 20px;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
-    }
+.friends-main-usd img {
+    width: 40px;
+    height: 40px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+
+.friends-text {
+    float: left;
+    padding-top: 10px;
+    padding-left: 15px;
+}
+
+.friends-text > a:hover {
+    color: #006064
+}
+
+.friends-text a {
+    color: #000000;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.view-more {
+    float: left;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.view-more > a {
+    color: #006064;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.view-more > a:hover {
+    color: #e44d3a
+}
+
+
+/* ============== Friends-info ============== */
+
+
+.main-title {
+    color: #000000;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.friends-title {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.friends-list {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.friend-info {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    text-align: center;
+    border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+.friend-up-info {
+    float: left;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.friend-up-info>img {
+    float: none;
+    margin-bottom: 10px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.friend-info > a {
+    display: inline-block;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 0;
+}
+
+.friend-info > a:hover {
+    color: #00838f;
+}
+
+/* ============== Post ============== */
+
+.post {
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.post-owner > a {
+    display: inline-block;
+    color: #000000;
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.post-owner-photo {
+    width: 80px;
+    height: 80px;
+    border: 5px solid #fff;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+
+.post-owner > a:hover {
+    color: #00838f;
+}
+
+.post-date {
+    display: inline-block;
+    color: #000000;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.post-text {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 200;
+}
+
+.add-post-button {
+    background-color: #006064;
+    float: right;
+    width: 100%;
+    margin-top: 10px;
+    margin-right: 0;
+}
+
+.add-post-button-col {
+    padding: 0;
+    float: right;
+}
+
+.add-post-image {
+    visibility: hidden;
+    margin: 0;
+    height: 0;
+}
+
+#postTextArea {
+    resize: vertical;
+}
+
+.delete-post-button {
+    color: #25567B;
+    padding: 5px;
+    float: right;
+    border: none;
+    background-color: #FFF;
+}
+.post-likes {
+    float: right;
+    margin-bottom: 10px;
+}
+
+.post-likes>.not-liked {
+    background-color: #006064;
+    color: #FFF;
+}
+
+.post-likes>.not-liked:hover {
+    background-color: #FF1122;
+    color: #FFF;
+}
+
+.post-likes>.liked {
+    background-color: #FF1122;
+    color: #FFF;
+}
+
+.post-likes>.liked:hover {
+    background-color: #006064;
+    color: #FFF;
+}
+
+.post-image {
+    margin: 10px 0;
+    border: thin;
+    border-color: cornsilk;
+}
+
+#attached-photo-name {
+    margin-top: 5px;
+}
+
+
+/* ============== User-information ============== */
+
+.info {
+    margin-bottom: 30px;
+}
+
+.info-section {
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.info-name {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 7px 0px;
+}
+
+.info-value {
+    color: #000000;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 7px 0px;
+}
+
+.change-info-link {
+    float: left;
+}
+
+/* ============== News ============== */
+
+.news {
+    padding: 10px 150px;
+}
+
+.news-title {
+    margin-left: 20px;
+    color: #000000;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.update-page {
+    padding: 10px 150px;
+}
+
+
+/* ============== Messages-page ============== */
+
+.messages-sec {
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+.free-space {
+    height: 120px;
+}
+
+.dialogs-list {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+}
+.dialogs-title {
+    float: left;
+    width: 100%;
+    padding: 36px 20px;
+}
+.dialogs-title > h3 {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+    float: left;
+}
+
+.dialogs-list {
+    float: left;
+    width: 100%;
+}
+.dialogs-list ul {
+    float: left;
+    width: 100%;
+    height: 530px;
+    overflow-y: scroll;
+}
+.dialogs-list ul li {
+    float: left;
+    width: 100%;
+    padding: 20px;
+    border-bottom: 1px solid #eeeeee;
+    cursor: pointer;
+}
+
+.user-dialog.selected {
+    background-color: #efefef;
+}
+.user-dialog:hover {
+    background-color: #efefef;
+}
+.usr-msg-details {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+.usr-msg-img {
+    height: 50px;
+    float: left;
+    width: 50px;
+    position: relative;
+}
+
+.usr-msg-img img {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.usr-msg-info {
+    float: left;
+    padding-left: 13px;
+}
+.usr-msg-info h3 {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+}
+.usr-msg-info p {
+    color: #686868;
+    font-size: 16px;
+}
+.usr-msg-info p img {
+    float: right;
+    position: relative;
+    top: 5px;
+    padding-left: 5px;
+}
+
+.usr-msg-name {
+    float: left;
+    padding-top: 15px;
+    padding-left: 13px;
+}
+.usr-msg-name a {
+    color: #000000;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.usr-msg-name > a:hover {
+    color: #006064
+}
+
+.posted_time {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    color: #b2b2b2;
+    font-size: 14px;
+}
+
+
+/* =============== main-message-box ============= */
+
+.main-conversation-box {
+    float: left;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    border-right: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+
+}
+.message-bar-head {
+    float: left;
+    width: 100%;
+    background-color: rgba(255,255,255,0.95);
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+.message-bar-head .usr-msg-details {
+    float: left;
+    width: auto;
+}
+.message-bar-head > a {
+    float: right;
+    color: #b2b2b2;
+    font-size: 20px;
+    padding-top: 15px;
+}
+
+.main-message-box {
+    float: left;
+    width: 100%;
+    position: relative;
+    margin-bottom: 15.5px;
+}
+.msg-usr-img {
+    position: absolute;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    bottom: 18px;
+}
+.msg-usr-img img {
+    width: 100%;
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+.message-dt {
+    float: left;
+    width: auto;
+    padding-left: 85px;
+}
+.main-message-box.right {
+    left: 0;
+    float: right;
+}
+.main-message-box.right .msg-usr-img {
+    left: auto;
+    right: 20px;
+}
+.main-message-box.right .message-dt {
+    padding-right: 85px;
+    float: right;
+}
+.main-message-box.right .message-dt > span {
+    float: right;
+    width: auto;
+}
+.message-inner-dt {
+    float: left;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    width: 100%;
+}
+.message-inner-dt > img {
+    display: inline-block;
+    width: auto;
+    margin-right: 5px;
+}
+.message-dt > span {
+    color: #b2b2b2;
+    font-size: 14px;
+    float: left;
+    width: 100%;
+    margin-top: 7px;
+}
+.message-inner-dt > p {
+    float: right;
+    width: 60%;
+    background-color: #006064;
+    font-size: 14px;
+    line-height: 22px;
+    padding: 10px 35px 10px 35px;
+    color: #fff;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+.message-dt.left .message-inner-dt > p {
+    background-color: #efefef;
+    color: #686868;
+    width: auto;
+    padding: 10px 15px;
+    float: left;
+}
+
+.messages-line {
+    float: left;
+    width: 100%;
+    height: 500px;
+    overflow-y: scroll;
+}
+
+/* ============== message-send-area ============ */
+
+.message-send-area {
+    float: left;
+    width: 100%;
+    background-color: #f3f5f7;
+    padding: 25px 20px 15px 20px;
+    border: 1px solid #eeeeee;
+}
+.message-send-area form {
+    float: left;
+    width: 100%;
+}
+.mf-field {
+    float: left;
+    width: 100%;
+}
+.mf-field textarea {
+    float: left;
+    width: 80%;
+    background-color: #fff;
+    color: #b2b2b2;
+    font-size: 16px;
+    padding: 10px 15px 0 15px;
+    border: 1px solid #e6e6e6;
+    resize: none;
+
+}
+.mf-field button {
+    margin-left: 10px;
+    margin-top: 25px;
+    width: 17%;
+    background-color: #006064;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    border: 0;
+    cursor: pointer;
+}
+
+/* ============== search ============ */
+
+.search-photo {
+    width: 150px;
+    height: 150px;
+    border: 5px solid #fff;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    margin-left: 50px;
+}
+
+.user-search-result {
+    padding: 10px;
+}
+
+#search-request {
+    resize: none;
+    width: 100%;
+    height: 35px;
+}
+
+.search-button {
+    width: 100%;
+    height: 100%;
+    background-color: #006064;
+}
+
+.search-user-info {
+    padding: 20px 0;
+}
+.search-user-info > a {
+    color: #000000;
+    font-size: 20px;
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.search-user-info > a:hover {
+    color: #006064;
+}
+
+.search-user-info > p {
+    color: #000000;
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight: 500;
+}
+
+
+/* ============== login-register ============ */
+
+.login-container {
+    width: 50%;
+    margin-top: 50px;
+    margin-left: 15%;
+    padding: 30px;
+    background-color: #fff;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 10px;
+}
+
+.login-container > div {
+    margin-bottom: 20px;
+}
+
+.login-container > div > label {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.select-language {
+    margin-top: 12px;
+    margin-right: 20px;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }

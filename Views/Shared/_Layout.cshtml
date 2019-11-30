@@ -1,41 +1,47 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Lun2Code</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="~/css/site.css?Version=49"/>
+    <link rel="stylesheet" href="~/css/side.css?Version=49"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a asp-area="" asp-controller="User" asp-action="Index" class="navbar-brand">Lun2Code</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a method="post" asp-controller="Account" asp-action="LogOff" class="navbar-brand">Выйти</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a asp-area="" asp-controller="User" asp-action="Index" class="navbar-brand">Lun2Code</a>
         </div>
-    </nav>
-
-    <div class="container body-content">
-        <div class="main_content">
-            @RenderBody()
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a method="post" asp-controller="Account" asp-action="LogOff" class="navbar-brand">Выйти</a>
+                </li>
+            </ul>
         </div>
     </div>
+</nav>
+
+<div id="sidebar">
+    <ul class="nav">
+        <li><a asp-controller="User" asp-action="Index">My Page</a></li>
+        <li><a asp-controller="User" asp-action="Index">Friends</a></li>
+        <li><a asp-controller="User" asp-action="Index">Messages</a></li>
+        <li><a asp-controller="User" asp-action="Index">Code Editor</a></li>
+        <li><a asp-controller="User" asp-action="Index">Settings</a></li>
+    </ul>
+</div>
+
+<div class="container body-content">
+    <div class="main_content">
+        @RenderBody()
+    </div>
+</div>
 </body>
 
 </html>

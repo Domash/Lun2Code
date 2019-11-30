@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,11 +12,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Lun2Code
 {
@@ -37,6 +40,8 @@ namespace Lun2Code
 				options.CheckConsentNeeded = context => true;
 				options.MinimumSameSitePolicy = SameSiteMode.None;
 			});
+
+			services.AddLocalization(settings => settings.ResourcesPath = "Resources");
 			
 			services.AddScoped<IUsersRepository, UsersRepository>();
 			services.AddDbContext<UsersContext>(settings
@@ -49,9 +54,25 @@ namespace Lun2Code
 				settings.Password.RequireUppercase       = false;
 				settings.Password.RequireNonAlphanumeric = false;
 			}).AddEntityFrameworkStores<UsersContext>();
-			
 
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+			services.Configure<RequestLocalizationOptions>(settings =>
+			{
+				var supportedCultures = new[]
+				{
+					new CultureInfo("en"),
+					new CultureInfo("ru")
+				};
+				
+				settings.DefaultRequestCulture = new RequestCulture("ru");
+				settings.SupportedCultures = supportedCultures;
+				settings.SupportedUICultures = supportedCultures;
+
+			});
+
+			services.AddMvc()
+				.AddViewLocalization().
+				AddDataAnnotationsLocalization().
+				SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +88,9 @@ namespace Lun2Code
 				app.UseHsts();
 			}
 
+			var settings = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
+			app.UseRequestLocalization(settings.Value);
+			
 			app.UseStaticFiles();
 			app.UseCookiePolicy();
 			app.UseAuthentication();

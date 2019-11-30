@@ -4,6 +4,7 @@ using Lun2Code.Models;
 using Lun2Code.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
 
 namespace Lun2Code.Controllers
 {
@@ -11,11 +12,16 @@ namespace Lun2Code.Controllers
 	{
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
+		private readonly IStringLocalizer<AccountController> _localizer;
 
-		public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+		public AccountController(
+				UserManager<User> userManager, 
+				SignInManager<User> signInManager,
+				IStringLocalizer<AccountController> localizer)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
+			_localizer = localizer;
 		}
 		
 		[HttpGet]
@@ -45,7 +51,7 @@ namespace Lun2Code.Controllers
 					return RedirectToAction("Index", "Home"); // Need to create UserController
 				}
 				
-				ModelState.AddModelError("", "Incorrect email or password."); // Add errorMessage field to class 
+				ModelState.AddModelError("", _localizer["sign"]); // Add errorMessage field to class 
 
 			}
 
@@ -73,7 +79,7 @@ namespace Lun2Code.Controllers
 					}
 					return RedirectToAction("Index", "Home");
 				}
-				ModelState.AddModelError("", "Incorrect email or password");
+				ModelState.AddModelError("", _localizer["sign"]);
 			}
 
 			return View(model);
