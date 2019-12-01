@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Lun2Code.Logging;
 using Lun2Code.Models;
+using Lun2Code.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -69,6 +70,8 @@ namespace Lun2Code
 
 			});
 
+			services.AddTransient<IEmailService, EmailService>();
+			
 			services.AddMvc()
 				.AddViewLocalization().
 				AddDataAnnotationsLocalization().

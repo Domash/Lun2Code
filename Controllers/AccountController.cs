@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Lun2Code.Models;
+using Lun2Code.Services;
 using Lun2Code.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,16 +13,20 @@ namespace Lun2Code.Controllers
 	{
 		private readonly UserManager<User> _userManager;
 		private readonly SignInManager<User> _signInManager;
+
+		private readonly IEmailService _emailService;
 		private readonly IStringLocalizer<AccountController> _localizer;
 
 		public AccountController(
 				UserManager<User> userManager, 
 				SignInManager<User> signInManager,
-				IStringLocalizer<AccountController> localizer)
+				IStringLocalizer<AccountController> localizer,
+				IEmailService emailService)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
 			_localizer = localizer;
+			_emailService = emailService;
 		}
 		
 		[HttpGet]

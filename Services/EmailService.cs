@@ -4,7 +4,7 @@ using MailKit.Net.Smtp;
 
 namespace Lun2Code.Services
 {
-    public class EmailService
+    public class EmailService : IEmailService
     {
         
         public async Task SendEmailAsync(string email, string subject, string message)
