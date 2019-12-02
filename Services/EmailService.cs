@@ -11,6 +11,7 @@ namespace Lun2Code.Services
         {
             var emailMessage = new MimeMessage();
             
+            // перенести все в конфиг файл
             emailMessage.From.Add(new MailboxAddress("Administration", "lun2code@kek.ru"));
             emailMessage.To.Add(new MailboxAddress("Email confirmation", email));
 
