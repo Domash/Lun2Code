@@ -19,7 +19,7 @@ namespace Lun2Code.Controllers
 
 		private readonly IEmailService _emailService;
 		private readonly IStringLocalizer<AccountController> _localizer;
-		private readonly ILogger _log = Logger.CreateLogger<AccountController>();
+		// private readonly ILogger _log = Logger.CreateLogger<AccountController>();
 
 		public AccountController(
 				UserManager<User> userManager, 
