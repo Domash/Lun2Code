@@ -6,5 +6,6 @@ namespace Lun2Code.Models
 
 		User GetUserById(string id);
 
+		void Update(User user);
 	}
 }

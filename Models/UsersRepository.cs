@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Lun2Code.Models
 {
 	public class UsersRepository : IUsersRepository
@@ -18,6 +20,11 @@ namespace Lun2Code.Models
 		public User GetUserById(string id)
 		{
 			return _context.Users.Find(id);
+		}
+
+		public void Update(User user)
+		{
+			_context.Entry(user).State = EntityState.Modified;
 		}
 	}
 }

@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Lun2Code.Models;
+using Lun2Code.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -28,6 +29,21 @@ namespace Lun2Code.Controllers
             _user = _repository.GetUserById(id);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<RedirectToActionResult> Update(UserViewModel info)
+        {
+            _user.UpdateUserInformation(info);
+            _repository.Update(_user);
+            _repository.Save();
+            return RedirectToAction("Index");
+        }
+        
+        [HttpGet]
+        public ViewResult Update()
+        {
+            return View(new UserViewModel(_user));
+        }
 
         public async Task<IActionResult> Index()
         {
