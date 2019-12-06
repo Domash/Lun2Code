@@ -2,19 +2,18 @@
     Layout = "_Layout";
 }
 
+@using Lun2Code.ViewModels
 @model User
 @{
 }
 
 <div>
-    <div class="usr-pic">
-        <img src="images/gabriela_lotarynska_cpp.jpg"/>
-        <b1>@Model</b1>
-    </div>
+
+    <div class="col-md-8 col-sm-8 pd-left-none no-pd main-column">
+                    @{await Html.RenderPartialAsync("Info", new UserViewModel(Model));}</div>
     
     <div>
-        <button type="submit" class="btn btn-primary button-main-page"  
-                                    onclick="@("window.location.href='" + @Url.Action("Update", "User") + "'");">Редактировать страницу</button>
-    </div>
-    
+            <button type="submit" class="btn btn-primary button-main-page"  
+                    onclick="@("window.location.href='" + @Url.Action("Update", "User") + "'");">Редактировать страницу</button>
+        </div>
 </div>

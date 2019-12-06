@@ -1,5 +1,42 @@
 @model Lun2Code.ViewModels.UserViewModel
 
-<div class="container-fluid">
-   
+<div class="container-fluid info">
+
+    <div class="info-section full-width">
+        <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+            Имя:
+        </div>
+        <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+            @Model.Name
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+            Фамилия:
+        </div>
+        <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+            @Model.Surname
+        </div>
+
+        <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+            Электронная почта:
+        </div>
+        <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+            @Model.Email
+        </div>
+
+        <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+            Страна:
+        </div>
+        <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+            @Model.Country
+        </div>
+        <div class="col-lg-4 col-md-5 col-sm-6 info-name">
+            Город:
+        </div>
+        <div class="col-lg-8 col-md-7 col-sm-6 info-value">
+            @Model.City
+        </div>
+
+    </div>
+
+
 </div>
