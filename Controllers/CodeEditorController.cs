@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lun2Code.Controllers
@@ -12,5 +14,16 @@ namespace Lun2Code.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public string Run(string code, string input)
+        {
+            Console.WriteLine(code);
+            Console.WriteLine(input);
+            
+            return code + input;
+        }
+        
+        
     }
 }

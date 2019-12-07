@@ -6,11 +6,41 @@
     <link rel="stylesheet" href="~/css/code_editor.css?Version=49"/>
 </head>
 
-<textarea class="code_text" name="code">
-</textarea>
-<textarea class="input">
+<textarea class="code" name="code_text" id="code_text">
+
 </textarea>
 
-<textarea class="output"></textarea>
+<textarea class="input" name="input_text" id="input_text">
 
-<button type="submit" class="btn btn-primary button_run" >Run Code</button>
+
+</textarea>
+
+<textarea class="output" name="output_text" id="output_text">
+
+</textarea>
+
+<button type="submit" class="btn btn-primary button_run"
+        onclick="RunCode()">
+    Run Code
+</button>
+
+<script>
+    function RunCode() {
+        
+        var code = $("#code_text").val();
+        var input = $("#input_text").val();
+        
+        $.ajax({
+                type: "POST",
+                url: "CodeEditor/Run",   
+                data: {'code': code, 'input': input},    
+                async: true,
+                success: function (msg) {
+                    $("#output_text").val(msg)
+                },
+                error: function () {
+                    return "error";
+                }
+         });
+    }
+</script>
