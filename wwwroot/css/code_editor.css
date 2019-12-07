@@ -9,14 +9,14 @@
 .input {
     height: 500px;
     width: 310px;
-    background-color: #cc6a7e;
+    background-color: #ffffff;
     overflow: scroll;
 }
 
 .output {
     height:125px;
     width:800px;
-    background-color: #2b2ecc;
+    background-color: #ffffff;
 }
 
 /* 939 */
