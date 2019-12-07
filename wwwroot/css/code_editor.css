@@ -1,0 +1,28 @@
+.code_text {
+    height:500px;
+    width:625px;
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 80%;
+    overflow:scroll;
+}
+
+.input {
+    height: 500px;
+    width: 310px;
+    background-color: #cc6a7e;
+    overflow: scroll;
+}
+
+.output {
+    height:125px;
+    width:800px;
+    background-color: #2b2ecc;
+}
+
+/* 939 */
+.button_run {
+    margin-bottom: 110px;
+    height:75px;
+    width:135px;
+    background-color: #006064;
+}
