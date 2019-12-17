@@ -25,7 +25,6 @@ namespace Lun2Code.Controllers
         [HttpPost]
         public string Run(string code, string input)
         {
-
             string result;
             
             using (var webClient = new WebClient())
@@ -44,13 +43,10 @@ namespace Lun2Code.Controllers
                 var response = webClient.UploadValues(_runUrl, "POST", data);
                 
                 result = Encoding.UTF8.GetString(response);
-                
-                
             }
             
             return result;
         }
-        
         
     }
 }

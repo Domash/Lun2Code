@@ -49,7 +49,10 @@ namespace Lun2Code.Controllers
 					Email    = model.Email,
 					UserName = model.Email,
 					Name     = model.Name,
-					Surname  = model.Surname
+					Surname  = model.Surname,
+					Country  = model.Country,
+					City     = model.City,
+					Gender   = model.Gender
 				};
 
 				var result = await _userManager.CreateAsync(user, model.Password);

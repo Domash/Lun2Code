@@ -45,8 +45,11 @@ namespace Lun2Code
 			services.AddLocalization(settings => settings.ResourcesPath = "Resources");
 			
 			services.AddScoped<IUsersRepository, UsersRepository>();
+			/*services.AddDbContext<UsersContext>(settings
+				=> settings.UseMySql(Configuration.GetConnectionString("DefaultConnection"))); // add connection namespace*/
+			
 			services.AddDbContext<UsersContext>(settings
-				=> settings.UseMySql(Configuration.GetConnectionString("DefaultConnection"))); // add connection name
+				=> settings.UseMySql(Configuration.GetConnectionString("DefaultConnection2")));
 						
 			services.AddIdentity<User, IdentityRole>(settings => {
 				settings.Password.RequiredLength         = 4;

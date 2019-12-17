@@ -1,4 +1,6 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using Lun2Code.Models;
 
 namespace Lun2Code.ViewModels
 {
@@ -28,6 +30,15 @@ namespace Lun2Code.ViewModels
 		[Display(Name = "Surname")]
 		[Required(ErrorMessage = RegErrorMessage)]
 		public string Surname { get; set; }
+		
+		[DefaultValue("Belarus")]
+		public string Country { get; set; }
+		
+		[DefaultValue("Minsk")]
+		public string City { get; set; }
+		
+		[DefaultValue(Gender.Female)]
+		public Gender Gender { get; set; }
 		
 	}
 }
