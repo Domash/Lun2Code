@@ -10,7 +10,7 @@ namespace Lun2Code.Contest
     {
         private string _apiKey = "761f043932d0b749c6748268367b632f568ca2a6";
         private string _secretKey = "e5eedefe20ec42f887201829d80733222e23e74a";
-        public DateTime LowerBound { get; set; }
+        private DateTime LowerBound { get; set; }
         
         public Codeforces(DateTime lowerBound)
         {
@@ -21,20 +21,34 @@ namespace Lun2Code.Contest
         {
             var contestsList = new List<Contest>();
 
-            using (WebClient webClient = new WebClient())
+            using (var webClient = new WebClient())
             {
                 var response = webClient.DownloadStringTaskAsync("https://codeforces.com/api/contest.list?gym=false");
 
                 var list = response.Result;
 
-                dynamic res = JsonConvert.DeserializeObject(list);
-                
-                Console.WriteLine("KEK");
-                Console.WriteLine(res.result[0].name);
-                
-            }
+                dynamic result = JsonConvert.DeserializeObject(list);
 
-            return new List<Contest>();
+                for (int i = 0; i < 10; ++i)
+                {
+                    var contest = new Contest
+                    {
+                        StartTime = Contest.UnixTimeStampToDateTime((long)result.result[i].startTimeSeconds),
+                        CloseTime = Contest.UnixTimeStampToDateTime((long)result.result[i].startTimeSeconds + (long)result.result[i].durationSeconds),
+                        EventName = result.result[i].name,
+                        EventUrl = "https://codeforces.com/contests/" + result.result[i].id,
+                        PlatformUrl = "https://codeforces.com"
+                    };
+                    
+                    if(contest.StartTime < DateTime.Now) break;
+                    
+                    contestsList.Add(contest);
+                }
+            }
+            
+            Console.WriteLine(contestsList.Count);
+
+            return contestsList;
         }
     }
 }
