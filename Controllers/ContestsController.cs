@@ -7,7 +7,6 @@ namespace Lun2Code.Controllers
 {
     public class ContestsController : Controller
     {
-
         public static List<Contest.Contest> Contests { get; set; }
         
         public IActionResult Index()

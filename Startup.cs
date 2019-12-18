@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Lun2Code.Contest;
 using Lun2Code.Logging;
 using Lun2Code.Models;
 using Lun2Code.Services;
@@ -73,6 +74,8 @@ namespace Lun2Code
 
 			});
 
+			services.AddHostedService<ContestsHostedService>();
+			
 			services.AddTransient<IEmailService, EmailService>();
 			
 			services.AddMvc()

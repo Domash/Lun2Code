@@ -11,7 +11,7 @@ namespace Lun2Code.Contest
         
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _timer  = new Timer(CollectInfo, null, TimeSpan.Zero, TimeSpan.FromHours(1));
+            _timer  = new Timer(UpdateContestList, null, TimeSpan.Zero, TimeSpan.FromSeconds(10));
             
             return Task.CompletedTask;
         }
@@ -23,9 +23,9 @@ namespace Lun2Code.Contest
             return Task.CompletedTask;
         }
         
-        private void CollectInfo(object state)
+        private void UpdateContestList(object state)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Update contests list");
         }
 
         public void Dispose()
