@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Lun2Code.Controllers;
 using Microsoft.Extensions.Hosting;
 
 namespace Lun2Code.Contest
@@ -11,7 +12,7 @@ namespace Lun2Code.Contest
         
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _timer  = new Timer(UpdateContestList, null, TimeSpan.Zero, TimeSpan.FromSeconds(10));
+            _timer  = new Timer(UpdateContestList, null, TimeSpan.Zero, TimeSpan.FromMinutes(30));
             
             return Task.CompletedTask;
         }
@@ -25,7 +26,7 @@ namespace Lun2Code.Contest
         
         private void UpdateContestList(object state)
         {
-            Console.WriteLine("Update contests list");
+            ContestsController.UpdateContests();
         }
 
         public void Dispose()

@@ -17,15 +17,15 @@ namespace Lun2Code.Contest
             LowerBound = lowerBound;
         }
         
-        public List<Contest> GetContestsList()
+        public async Task<List<Contest>> GetContestsList()
         {
             var contestsList = new List<Contest>();
 
             using (var webClient = new WebClient())
             {
-                var response = webClient.DownloadStringTaskAsync("https://codeforces.com/api/contest.list?gym=false");
+                var response = await webClient.DownloadStringTaskAsync("https://codeforces.com/api/contest.list?gym=false");
 
-                var list = response.Result;
+                var list = response;
 
                 dynamic result = JsonConvert.DeserializeObject(list);
 
@@ -37,16 +37,15 @@ namespace Lun2Code.Contest
                         CloseTime = Contest.UnixTimeStampToDateTime((long)result.result[i].startTimeSeconds + (long)result.result[i].durationSeconds),
                         EventName = result.result[i].name,
                         EventUrl = "https://codeforces.com/contests/" + result.result[i].id,
-                        PlatformUrl = "https://codeforces.com"
+                        PlatformUrl = "https://codeforces.com",
+                        PlatformName = "Codeforces"
                     };
                     
-                    if(contest.StartTime < DateTime.Now) break;
+                    if(contest.StartTime < LowerBound) break;
                     
                     contestsList.Add(contest);
                 }
             }
-            
-            Console.WriteLine(contestsList.Count);
 
             return contestsList;
         }

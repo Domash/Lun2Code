@@ -5,6 +5,6 @@ namespace Lun2Code.Contest
 {
     public interface IContest
     {
-        List<Contest> GetContestsList();
+        Task<List<Contest>> GetContestsList();
     }
 }
