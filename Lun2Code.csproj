@@ -21,4 +21,29 @@
       <Compile Remove="Views\Account\login.cshtml.cs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Tests" />
+      <Folder Include="wwwroot\usersMainPhotos" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Test\TEST\packages.config" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Tests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Remove="Tests\**" />
+    </ItemGroup>
+
 </Project>

@@ -26,8 +26,7 @@ namespace Lun2Code.Contest
                 var response = await webClient.DownloadStringTaskAsync("https://dmoj.ca/api/contest/list");
                 
                 var result = JsonConvert.DeserializeObject<Dictionary<string, DmojObject>>(response);
-                
-                
+
                 foreach (var res in result)
                 {
                     var flag = ConvertToDateTime(res.Value.StartTime, res.Value.CloseTIme, out var startTime, out var closeTime);
@@ -44,13 +43,12 @@ namespace Lun2Code.Contest
                             PlatformName = "DMOJ"
                         });
                     }
-                    
                 }    
             }
 
             return contestsList;
         }
-
+        
         private bool ConvertToDateTime(string valueStartTime, string valueCloseTime, out DateTime startTime, out DateTime closeTime)
         {
 
@@ -64,7 +62,7 @@ namespace Lun2Code.Contest
         }    
     }
 
-    class DmojObject
+    internal class DmojObject
     {
         [JsonProperty("name")]
         public string Name { get; set; }

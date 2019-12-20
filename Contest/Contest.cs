@@ -26,6 +26,7 @@ namespace Lun2Code.Contest
             PlatformUrl = platformUrl;
             StartTime = startTime;
             CloseTime = closeTime;
+            PlatformName = platformName;
         }
 
         public static DateTime UnixTimeStampToDateTime(long unixTimeStamp)

@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using Lun2Code.Models;
 using Lun2Code.ViewModels;
@@ -38,6 +40,17 @@ namespace Lun2Code.Controllers
             _repository.Save();
             return RedirectToAction("Index");
         }
+
+        public async Task UpdateMainPhoto(IFormFile mainPhoto)
+        {
+            var path = "/usersMainPhotos" + _user.Id + ".jpg";
+            using (var stream = new FileStream(_environment.WebRootPath + path, FileMode.Create))
+            {
+                await mainPhoto.CopyToAsync(stream);
+            }
+
+        }
+        
         
         [HttpGet]
         public ViewResult Update()

@@ -21,7 +21,7 @@ namespace Lun2Code.Controllers
             var cf = new Codeforces(DateTime.Now);
             var dmoj = new DMOJ(DateTime.Now);
             
-            Contests.Clear();
+            Contests?.Clear();
             
             Contests = cf.GetContestsList().Result;
             Contests.AddRange(dmoj.GetContestsList().Result);
