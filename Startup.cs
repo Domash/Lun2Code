@@ -5,9 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Lun2Code.Contest;
+using Lun2Code.Hubs;
 using Lun2Code.Logging;
 using Lun2Code.Models;
 using Lun2Code.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -73,11 +75,20 @@ namespace Lun2Code
 				settings.SupportedUICultures = supportedCultures;
 
 			});
+			
+			services.AddAuthentication().AddGoogle(options =>
+			{
+				options.ClientId = "8776525499-8rbdg7tvp72on2jil8nvkquq31e5ak3i.apps.googleusercontent.com";
+				options.ClientSecret = "j91Bj2imybBNqLW2sDyMjN_p";
+			});
 
-			services.AddHostedService<ContestsHostedService>();
+			// 8776525499-8rbdg7tvp72on2jil8nvkquq31e5ak3i.apps.googleusercontent.com
+			// j91Bj2imybBNqLW2sDyMjN_p
+			
+		//	services.AddHostedService<ContestsHostedService>();
 			
 			services.AddTransient<IEmailService, EmailService>();
-			
+
 			services.AddMvc()
 				.AddViewLocalization().
 				AddDataAnnotationsLocalization().
@@ -106,6 +117,10 @@ namespace Lun2Code
 			app.UseStatusCodePages();
 			app.UseHttpsRedirection();
 
+			app.UseAuthentication();
+
+			//app.UseSignalR(routes => { routes.MapHub<ChatHub>("/chat"); });
+			
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(

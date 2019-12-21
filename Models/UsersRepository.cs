@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lun2Code.Models
@@ -25,6 +28,21 @@ namespace Lun2Code.Models
 		public void Update(User user)
 		{
 			_context.Entry(user).State = EntityState.Modified;
+		}
+
+		public async Task<List<GeneralChatMessage>> GetMessages()
+		{
+			return _context.Messages.ToList();
+		}
+
+		public async Task AddMessage(GeneralChatMessage message)
+		{
+			await _context.Messages.AddAsync(message);
+		}
+
+		public async Task SaveChanges()
+		{
+			await _context.SaveChangesAsync();
 		}
 	}
 }

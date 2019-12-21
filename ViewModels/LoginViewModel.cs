@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Lun2Code.ViewModels
 {
@@ -14,7 +16,8 @@ namespace Lun2Code.ViewModels
 		public string Password { get; set; }
 		
 		public string ReturnUrl { get; set; }
-
+		
+		public IList<AuthenticationScheme> ExternalLogins { get; set; }
 	}
 
 }

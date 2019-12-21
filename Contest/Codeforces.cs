@@ -8,8 +8,8 @@ namespace Lun2Code.Contest
 {
     public class Codeforces : IContest
     {
-        private string _apiKey = "761f043932d0b749c6748268367b632f568ca2a6";
-        private string _secretKey = "e5eedefe20ec42f887201829d80733222e23e74a";
+        //private string _apiKey = "761f043932d0b749c6748268367b632f568ca2a6";
+        //private string _secretKey = "e5eedefe20ec42f887201829d80733222e23e74a";
         private DateTime LowerBound { get; set; }
         
         public Codeforces(DateTime lowerBound)

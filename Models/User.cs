@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Lun2Code.ViewModels;
@@ -14,8 +16,8 @@ namespace Lun2Code.Models
 		
 		public string Country { get; set; }
 		public string City { get; set; }
-		
 
+		public ICollection<GeneralChatMessage> Messages { get; set; }
 
 		[NotMapped]
 		public string PhotoPath
@@ -40,7 +42,7 @@ namespace Lun2Code.Models
 		
 		public User()
 		{
-
+			Messages = new List<GeneralChatMessage>();
 		}
 
 	}

@@ -1,3 +1,4 @@
+using System;
 using Lun2Code.Models;
 using Microsoft.AspNetCore.Http;
 
@@ -21,7 +22,7 @@ namespace Lun2Code.ViewModels
         {
             
         }
-
+        
         public UserViewModel(User user)
         {
             Name = user.Name;

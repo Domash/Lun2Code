@@ -6,7 +6,7 @@ namespace Lun2Code.Hubs
 {
     public class ChatHub : Hub
     {
-        public async Task SendMessage(GeneralCharMessage message) =>
-            await Clients.All.SendAsync("", message);
+        public async Task SendMessage(GeneralChatMessage message) =>
+            await Clients.All.SendAsync("Send", message);
     }
 }

@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Lun2Code.Logging;
 using Lun2Code.Models;
@@ -59,20 +61,7 @@ namespace Lun2Code.Controllers
 
 				if (result.Succeeded)
 				{
-					
-//					var code = await _userManager.GenerateEmailConfirmationTokenAsync(user).ConfigureAwait(true);
-//					var callbackUrl = Url.Action(
-//						"ConfirmEmail",
-//						"Account",
-//						new { userId = user.Id, code = code },
-//						protocol: HttpContext.Request.Scheme
-//					);
-//					
-//					await _emailService.SendEmailAsync(user.Email, "Confirm your account",
-//						$"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>").ConfigureAwait(true);
-//
-//					return Content("Для завершения регистрации проверьте электронную почту и перейдите по ссылке, указанной в письме");
-//
+					await _userManager.AddToRoleAsync(user, "User");
 					await _signInManager.SignInAsync(user, false);
 					return RedirectToAction("Index", "Home");
 				}
@@ -111,9 +100,18 @@ namespace Lun2Code.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Login(string returnUrl = null)
+		[AllowAnonymous]
+		public async Task<IActionResult> Login(string returnUrl = null)
 		{
-			return View(new LoginViewModel { ReturnUrl = returnUrl });
+			
+			var model = new LoginViewModel
+			{
+				ReturnUrl = returnUrl,
+				ExternalLogins = 
+					(await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList()
+			};
+			
+			return View(model);
 		}
 
 		[HttpPost]
@@ -137,6 +135,51 @@ namespace Lun2Code.Controllers
 			return View(model);
 		}
 		
+		[AllowAnonymous]
+		[HttpPost]
+		public IActionResult ExternalLogin(string provider, string returnUrl)
+		{
+			var redirectUrl = Url.Action("GoogleResponse", "Account",
+				new { ReturnUrl = returnUrl });
+			var properties = _signInManager
+				.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+			return new ChallengeResult(provider, properties);
+		}
+		
+		[AllowAnonymous]
+		public async Task<IActionResult> GoogleResponse()
+		{
+			var info = await _signInManager.GetExternalLoginInfoAsync();
+
+			if (info == null)
+			{
+				return RedirectToAction(nameof(Login));
+			}
+
+			var user = new User
+			{
+				Email = info.Principal.FindFirst(ClaimTypes.Email).Value,
+				UserName = info.Principal.FindFirst(ClaimTypes.Email).Value,
+				Name = "",
+				Surname = "",
+				Country = "Belarus",
+				City = "Minsk",
+				Gender = Gender.Female
+			};
+  
+			var result = await _userManager.CreateAsync(user, "28vehera");
+			
+			Console.WriteLine(result.ToString());
+			
+			if (result.Succeeded)
+			{
+				await _signInManager.SignInAsync(user, false);
+				return RedirectToAction("Index", "Home");
+			}
+			
+			return RedirectToAction(nameof(Login));
+		}
+
 		public async Task<IActionResult> LogOff()
 		{
 			await _signInManager.SignOutAsync();
@@ -145,3 +188,17 @@ namespace Lun2Code.Controllers
 		
 	}
 }
+
+//					var code = await _userManager.GenerateEmailConfirmationTokenAsync(user).ConfigureAwait(true);
+//					var callbackUrl = Url.Action(
+//						"ConfirmEmail",
+//						"Account",
+//						new { userId = user.Id, code = code },
+//						protocol: HttpContext.Request.Scheme
+//					);
+//					
+//					await _emailService.SendEmailAsync(user.Email, "Confirm your account",
+//						$"Подтвердите регистрацию, перейдя по ссылке: <a href='{callbackUrl}'>link</a>").ConfigureAwait(true);
+//
+//					return Content("Для завершения регистрации проверьте электронную почту и перейдите по ссылке, указанной в письме");
+//

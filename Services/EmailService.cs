@@ -6,13 +6,11 @@ namespace Lun2Code.Services
 {
     public class EmailService : IEmailService
     {
-        
         public async Task SendEmailAsync(string email, string subject, string message)
         {
             var emailMessage = new MimeMessage();
             
-            // перенести все в конфиг файл
-            emailMessage.From.Add(new MailboxAddress("Administration", "lun2code@kek.ru"));
+            emailMessage.From.Add(new MailboxAddress("Administration", ""));
             emailMessage.To.Add(new MailboxAddress("Email confirmation", email));
 
             emailMessage.Subject = subject;

@@ -15,7 +15,7 @@ namespace Lun2Code
 {
 	public class Program
 	{
-		public static void Main(string[] args)
+		public static async Task Main(string[] args)
 		{
 			var host = CreateWebHostBuilder(args).Build();
 
@@ -26,7 +26,10 @@ namespace Lun2Code
 				{
 					var userManager  = services.GetRequiredService<UserManager<User>>();
 					var rolesManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-					// await RoleInitializer
+					var configuration = services.GetRequiredService<IConfiguration>();
+
+					await Initializer.Init(userManager, rolesManager, configuration);
+
 				}
 				catch (Exception e)
 				{
